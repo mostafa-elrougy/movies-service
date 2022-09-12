@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ActorService {
@@ -20,7 +21,7 @@ public class ActorService {
     private MovieRepository movieRepository;
 
     public void addActor(Actor actor){
-        List<Integer> moviesIds = actor.getActorMovies().stream().map(Movie::getMovieId).toList();
+        List<Integer> moviesIds = actor.getActorMovies().stream().map(Movie::getMovieId).collect(Collectors.toList());
         List<Movie> movies = movieRepository.findMoviesByMovieIdIn(moviesIds);
         actor.setActorMovies(movies);
         actorRepository.save(actor);

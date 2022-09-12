@@ -11,5 +11,5 @@ public interface MovieRepository extends JpaRepository<Movie,Integer> {
     List<Movie> findMoviesByMovieIdIn(List<Integer> moviesIds);
 
     List<Movie> findMoviesByMovieNameContains(String word);
-    
+
 }
