@@ -21,6 +21,7 @@ public class MovieController {
 
     }
 
+    @CrossOrigin
     @GetMapping("/getmovies")
     public List<Movie> getMovies(){
 
