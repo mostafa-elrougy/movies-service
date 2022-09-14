@@ -22,6 +22,7 @@ public class AppUserController {
         return appUserService.returnUsers();
     }
 
+//    @CrossOrigin
     @PostMapping("/register")
     public void addUser(@RequestBody AppUser user){
         appUserService.addUser(user);
@@ -34,17 +35,20 @@ public class AppUserController {
 //        appUserService.register(username,email,password);
 //    }
 
+//    @CrossOrigin
     @DeleteMapping("/deleteuser/{id}")
     public void deleteUser(@PathVariable int id){
         appUserService.deleteUser(id);
 
     }
 
+//    @CrossOrigin
     @PostMapping("/login")
     public AppUser login(@RequestBody AppUser user) {
         return appUserService.login(user);
     }
 
+    @CrossOrigin
     @GetMapping("/getfavourites/{userId}")
     public List<Movie> getFavourites(@PathVariable Integer userId){
 
@@ -52,11 +56,13 @@ public class AppUserController {
 
     }
 
+    @CrossOrigin
     @PostMapping("addtofavourites/{userId}/{movieId}")
     public void addToFavourites(@PathVariable("userId") Integer userId,@PathVariable("movieId") Integer movieId) {
         appUserService.addToFavourites(userId, movieId);
 
     }
+    @CrossOrigin
     @DeleteMapping("/removefavourite/{userId}/{movieId}")
     public void removeFavourites(@PathVariable Integer userId,@PathVariable Integer movieId) {
         appUserService.removeFavourites(userId,movieId);
