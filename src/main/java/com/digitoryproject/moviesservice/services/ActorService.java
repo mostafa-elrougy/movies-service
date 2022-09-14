@@ -27,6 +27,13 @@ public class ActorService {
         actorRepository.save(actor);
     }
 
+    public void addActors(List<Actor> actors){
+        for(Actor actor : actors){
+            addActor(actor);
+        }
+
+    }
+
     public Actor getActor(int id){
         return actorRepository.findById(id).get();
 

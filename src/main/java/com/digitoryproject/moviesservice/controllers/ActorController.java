@@ -20,6 +20,12 @@ public class ActorController {
         actorService.addActor(actor);
 
     }
+    @PostMapping("/addactors")
+    public void addActors(@RequestBody List<Actor> actors){
+        actorService.addActors(actors);
+
+    }
+
 @GetMapping("/getactor/{id}")
     public Actor getActor(@PathVariable int id){
         return actorService.getActor(id);

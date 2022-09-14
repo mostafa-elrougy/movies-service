@@ -12,6 +12,26 @@ public class Actor {
     private String actorName;
     private String actorImageUrl;
 
+    private String age;
+
+    private String height;
+
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+    public String getHeight() {
+        return height;
+    }
+
+    public void setHeight(String height) {
+        this.height = height;
+    }
+
     @ManyToMany(cascade = {
             CascadeType.PERSIST,
             CascadeType.MERGE})
