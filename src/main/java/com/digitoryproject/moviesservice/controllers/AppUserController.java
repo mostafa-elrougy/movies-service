@@ -1,6 +1,7 @@
 package com.digitoryproject.moviesservice.controllers;
 
 import com.digitoryproject.moviesservice.entities.AppUser;
+import com.digitoryproject.moviesservice.entities.Movie;
 import com.digitoryproject.moviesservice.services.AppUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -44,8 +45,20 @@ public class AppUserController {
         return appUserService.login(user);
     }
 
+    @GetMapping("/getfavourites/{userId}")
+    public List<Movie> getFavourites(@PathVariable Integer userId){
 
+        return appUserService.getFavourites(userId);
 
+    }
 
+    @PostMapping("addtofavourites/{userId}/{movieId}")
+    public void addToFavourites(@PathVariable("userId") Integer userId,@PathVariable("movieId") Integer movieId) {
+        appUserService.addToFavourites(userId, movieId);
 
-}
+    }
+    @DeleteMapping("/removefavourite/{userId}/{movieId}")
+    public void removeFavourites(@PathVariable Integer userId,@PathVariable Integer movieId) {
+        appUserService.removeFavourites(userId,movieId);
+    }
+    }

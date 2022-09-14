@@ -33,6 +33,11 @@ public class MovieController {
         movieService.deleteMovie(id);
 
     }
+    @PostMapping("/addmovies")
+    public void addMovies(@RequestBody List<Movie> movies){
+        movieService.addMovies(movies);
+
+    }
 
     @GetMapping("/findbycategory/{category}")
         public List<Movie> findByCategory(@PathVariable String category ) {

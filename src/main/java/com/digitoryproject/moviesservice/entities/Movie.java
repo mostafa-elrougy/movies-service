@@ -1,5 +1,7 @@
 package com.digitoryproject.moviesservice.entities;
 
+import lombok.Getter;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -27,6 +29,8 @@ public class Movie {
 
 //    @ManyToMany(mappedBy = "actorMovies")
 //    private List<Actor> actors = new ArrayList<>();
+    @ManyToMany(mappedBy = "userFavourites")
+    private List<AppUser> posts = new ArrayList<>();
 
 //    public void setMovieId(Integer movieId) {
 //        this.movieId = movieId;

@@ -1,13 +1,11 @@
 package com.digitoryproject.moviesservice.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 //import org.springframework.security.core.GrantedAuthority;
 //import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Collection;
+import java.util.List;
 
 @Entity
 public class AppUser  {
@@ -20,6 +18,30 @@ public class AppUser  {
     private String email;
     private String password;
 
+
+
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE})
+    @JoinTable(name = "user_favourites",
+            joinColumns = @JoinColumn(name = "Id"),
+            inverseJoinColumns = @JoinColumn(name = "movie_id")
+    )
+    private List<Movie> userFavourites;
+
+
+
+    public List<Movie> getUserFavourites() {
+        return userFavourites;
+    }
+
+    public void setUserFavourites(List<Movie> userFavourites) {
+        this.userFavourites = userFavourites;
+    }
+
+    public void addToFavourites(Movie userFavourite) {
+        this.userFavourites.add(userFavourite) ;
+    }
 //    private boolean isSuccessfullyLogged= false;
 
 //    public boolean isSuccessfullyLogged() {
@@ -34,8 +56,8 @@ public class AppUser  {
         return Id;
     }
 
-    public void setId(Integer id) {
-        Id = id;
+    public void setId(Integer userId) {
+        this.Id = userId;
     }
 
     public String getUsername() {

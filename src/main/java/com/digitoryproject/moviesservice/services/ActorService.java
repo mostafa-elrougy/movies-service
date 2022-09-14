@@ -32,6 +32,16 @@ public class ActorService {
 
     }
 
+    public List<Actor> getActors(){
+        return actorRepository.findAll();
+
+    }
+
+    public void deleteActor(int id){
+         actorRepository.deleteById(id);
+
+    }
+
 
 
 }

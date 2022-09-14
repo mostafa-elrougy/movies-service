@@ -17,6 +17,11 @@ public class MovieService {
 
     }
 
+    public void addMovies(List<Movie> movies){
+        movieRepository.saveAll(movies);
+
+    }
+
 
 
     public void deleteMovie(int id){
